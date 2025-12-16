@@ -798,6 +798,10 @@ footer {
     font-weight: 700;
     opacity: 0;
     animation: heroFadeUp 1s ease-out forwards;
+    /* Visual separation */
+    border-bottom: 4px solid var(--primary);
+    padding-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .archive-container {
