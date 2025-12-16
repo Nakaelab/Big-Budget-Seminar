@@ -1,17 +1,17 @@
 :root {
-    --primary: #1a1c1e;
-    /* Deep Charcoal: Sophisticated & Modern */
-    --accent: #a88b50;
-    /* Muted Bronze: Premium & Wealth */
-    --accent-light: #f4efe6;
-    /* Warm Beige background */
-    --bg-light: #f9f8f6;
-    /* Paper-like off-white */
-    --text-main: #2d2d2d;
-    --text-sub: #66605b;
+    --primary: #1a1a1a;
+    /* Soft Black: Modern & Sharp */
+    --accent: #6e6e6e;
+    /* Silver Grey: Sophisticated & Neutral */
+    --accent-light: #f5f5f5;
+    /* Light Grey Background */
+    --bg-light: #ffffff;
+    /* Pure White: Clean */
+    --text-main: #333333;
+    --text-sub: #777777;
     --white: #ffffff;
-    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    --border-color: #e6e2dc;
+    --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    --border-color: #e5e5e5;
 }
 
 * {
@@ -127,9 +127,10 @@ nav {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.15;
-    /* Reduced opacity for better text contrast, but no filter */
-    /* Removed heavy filters */
+    opacity: 0;
+    /* Clean slate for animation */
+    transform-origin: left center;
+    animation: heroSlideIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .hero-content {
@@ -138,6 +139,9 @@ nav {
     padding: 0 20px;
     width: 100%;
     max-width: 1200px;
+    opacity: 0;
+    animation: contentSlideIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.5s;
+    /* Reduced delay to 0.5s */
 }
 
 .hero h1 {
@@ -148,6 +152,8 @@ nav {
     line-height: 1.2;
     color: var(--primary);
     white-space: nowrap;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    /* Subtle glow for title too */
 }
 
 @media (max-width: 768px) {
@@ -158,13 +164,15 @@ nav {
 
 .hero p {
     font-size: 1.1rem;
-    opacity: 0.8;
-    font-weight: 500;
+    font-weight: 700;
+    /* Bold for readability */
     letter-spacing: 0.1em;
     font-family: 'Inter', sans-serif;
     text-transform: uppercase;
-    font-size: 0.85rem;
-    color: var(--text-sub);
+    color: var(--primary);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.5);
+    /* Glow instead of box */
+    margin-top: 10px;
 }
 
 /* --- Container & Titles --- */
@@ -508,3 +516,46 @@ footer {
         justify-content: center;
     }
 }
+
+/* --- Animations --- */
+@keyframes heroSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-10%) scale(1.05);
+        /* Move from left */
+    }
+
+    100% {
+        opacity: 0.6;
+        /* "Koi" - Darker/Stronger */
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes contentSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+        /* Move from right */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* --- Scroll Reveal Animation --- */
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+```
