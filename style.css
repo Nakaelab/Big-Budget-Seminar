@@ -104,6 +104,10 @@ nav {
     display: none;
 }
 
+.hamburger {
+    display: none;
+}
+
 /* --- Hero Section --- */
 .hero {
     height: 50vh;
@@ -767,10 +771,7 @@ footer {
     }
 }
 
-/* Base Hamburger (Hidden on Desktop) */
-.hamburger {
-    display: none;
-}
+
 
 /* Archive Animation Overrides */
 .timeline .hero-sequence {
