@@ -617,6 +617,18 @@ footer {
     color: var(--primary);
 }
 
+.host-link {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    transition: var(--transition);
+}
+
+.host-link:hover {
+    color: var(--accent);
+    border-bottom-color: transparent;
+}
+
 .email-info {
     font-size: 0.9rem;
     color: var(--text-sub);
