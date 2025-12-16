@@ -130,7 +130,7 @@ nav {
     opacity: 0;
     /* Clean slate for animation */
     transform-origin: left center;
-    animation: heroSlideIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: heroSlideIn 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .hero-content {
@@ -139,9 +139,6 @@ nav {
     padding: 0 20px;
     width: 100%;
     max-width: 1200px;
-    opacity: 0;
-    animation: contentSlideIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.5s;
-    /* Reduced delay to 0.5s */
 }
 
 .hero h1 {
@@ -153,7 +150,8 @@ nav {
     color: var(--primary);
     white-space: nowrap;
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-    /* Subtle glow for title too */
+    opacity: 0;
+    animation: contentSlideIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.5s;
 }
 
 @media (max-width: 768px) {
@@ -165,14 +163,14 @@ nav {
 .hero p {
     font-size: 1.1rem;
     font-weight: 700;
-    /* Bold for readability */
     letter-spacing: 0.1em;
     font-family: 'Inter', sans-serif;
     text-transform: uppercase;
     color: var(--primary);
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.5);
-    /* Glow instead of box */
     margin-top: 10px;
+    opacity: 0;
+    animation: heroFadeUp 1.2s ease-out forwards 0.8s;
 }
 
 /* --- Container & Titles --- */
@@ -383,6 +381,179 @@ nav {
     text-align: justify;
 }
 
+/* --- Statistics Section (Compact) --- */
+.stats-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 80px;
+}
+
+.stats-trigger {
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 24px 30px;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.stats-trigger:hover {
+    border-color: var(--accent);
+    background: var(--bg-light);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+}
+
+.trigger-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--bg-light);
+    border-radius: 50%;
+    margin-right: 20px;
+    color: var(--primary);
+    flex-shrink: 0;
+    transition: var(--transition);
+}
+
+.stats-trigger:hover .trigger-icon {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.trigger-text {
+    flex: 1;
+}
+
+.trigger-title {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+.trigger-desc {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-sub);
+}
+
+.trigger-arrow {
+    color: var(--text-sub);
+    opacity: 0.5;
+    transition: var(--transition);
+    width: 20px;
+    height: 20px;
+}
+
+.stats-trigger:hover .trigger-arrow {
+    opacity: 1;
+    transform: translateX(5px);
+    color: var(--primary);
+}
+
+/* --- Modal --- */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    z-index: 2000;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Black w/ opacity */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+}
+
+
+.modal-content-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 1000px;
+    max-height: 90vh;
+    overflow-y: auto;
+    /* Enable scrolling */
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    padding: 20px;
+    /* Padding for scrollbar */
+}
+
+.modal.show .modal-content-wrapper {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.modal-content {
+    max-width: 100%;
+    width: auto;
+    /* Maintain aspect ratio */
+    height: auto;
+    margin-bottom: 20px;
+    /* Space between images */
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+#modalCaption {
+    margin-top: 10px;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.05em;
+    padding-bottom: 20px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2001;
+    transition: color 0.3s;
+    background: rgba(255, 255, 255, 0.1);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.2);
+}
+
 /* --- Link Cards --- */
 .links-grid {
     display: grid;
@@ -558,4 +729,19 @@ footer {
     transform: translateY(0);
 }
 
-```
+@keyframes heroFadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-sequence {
+    opacity: 1;
+    animation: none;
+}

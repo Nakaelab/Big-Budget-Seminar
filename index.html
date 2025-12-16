@@ -19,7 +19,7 @@
         <div class="nav-links">
             <a href="#seminar">Seminar</a>
             <a href="archive.html">Past Seminars</a>
-            <a href="#access">Access</a>
+            <a href="#statistics">Statistics</a>
             <a href="#resources">Resources</a>
             <a href="#contact" class="btn-nav">Contact</a>
         </div>
@@ -36,7 +36,7 @@
 
         <div class="container">
             <section id="seminar">
-                <div class="card">
+                <div class="card hero-sequence">
                     <span class="card-tag">Vol.03 Seminar & Discussion</span>
                     <h2>科研費基盤B獲得のための座談会</h2>
 
@@ -83,6 +83,39 @@
                 </div>
             </section>
 
+            <section id="statistics">
+                <div class="section-title">実績・統計データ</div>
+                <div class="stats-list">
+                    <button class="stats-trigger" data-img="image/Materials1.png,image/Materials2.png"
+                        data-caption="主な競争的資金一覧">
+                        <div class="trigger-icon"><i data-lucide="award"></i></div>
+                        <div class="trigger-text">
+                            <span class="trigger-title">主な競争的資金一覧</span>
+                            <span class="trigger-desc">獲得プロジェクト一覧（2025年度〜）</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="trigger-arrow"></i>
+                    </button>
+
+                    <button class="stats-trigger" data-img="image/Materials3.png" data-caption="科学研究費助成事業">
+                        <div class="trigger-icon"><i data-lucide="file-text"></i></div>
+                        <div class="trigger-text">
+                            <span class="trigger-title">科学研究費助成事業</span>
+                            <span class="trigger-desc">申請・採択状況（新規・継続）</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="trigger-arrow"></i>
+                    </button>
+
+                    <button class="stats-trigger" data-img="image/Materials4.png" data-caption="産学官連携・外部資金受入状況">
+                        <div class="trigger-icon"><i data-lucide="bar-chart-2"></i></div>
+                        <div class="trigger-text">
+                            <span class="trigger-title">産学官連携・外部資金受入状況</span>
+                            <span class="trigger-desc">共同研究・受託研究・寄付講座</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="trigger-arrow"></i>
+                    </button>
+                </div>
+            </section>
+
             <section id="resources">
                 <div class="section-title">参考資料・リンク集</div>
                 <div class="links-grid">
@@ -120,6 +153,14 @@
             &copy; 2025 University of Fukui. Research Promotion Group.
         </div>
     </footer>
+
+    <div id="imageModal" class="modal">
+        <span class="modal-close"><i data-lucide="x"></i></span>
+        <div class="modal-content-wrapper">
+            <img class="modal-content" id="modalImg">
+            <div id="modalCaption"></div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

@@ -23,14 +23,76 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     // Elements to animate
-    const animatedElements = document.querySelectorAll('.card, .mission-box, .section-title, .link-card, .footer-contact');
+    const animatedElements = document.querySelectorAll('.card:not(.hero-sequence), .mission-box, .section-title, .link-card, .footer-contact, .stats-trigger');
 
     animatedElements.forEach((el, index) => {
         el.classList.add('fade-up');
-        // Add slight stagger for link cards if they are siblings
-        if (el.classList.contains('link-card')) {
+        // Add slight stagger for link cards or stats triggers if they are siblings
+        if (el.classList.contains('link-card') || el.classList.contains('stats-trigger')) {
             el.style.transitionDelay = `${(index % 3) * 0.1}s`;
         }
         observer.observe(el);
+    });
+
+    // --- Modal Logic ---
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalCaption = document.getElementById('modalCaption');
+    const triggers = document.querySelectorAll('.stats-trigger');
+    const closeBtn = document.querySelector('.modal-close');
+
+    triggers.forEach(trigger => {
+        trigger.addEventListener('click', function () {
+            modal.style.display = 'block';
+            // Slight delay to allow display:block to apply before adding class for opacity transition
+            requestAnimationFrame(() => {
+                modal.classList.add('show');
+            });
+
+            // Clear existing content
+            const contentWrapper = modal.querySelector('.modal-content-wrapper');
+            contentWrapper.innerHTML = ''; // Reset
+
+            // Handle multiple images
+            const imgPaths = this.getAttribute('data-img').split(',');
+            imgPaths.forEach(path => {
+                const img = document.createElement('img');
+                img.src = path.trim();
+                img.className = 'modal-content';
+                contentWrapper.appendChild(img);
+            });
+
+            // Add caption
+            const caption = document.createElement('div');
+            caption.id = 'modalCaption';
+            caption.textContent = this.getAttribute('data-caption');
+            contentWrapper.appendChild(caption);
+
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+    });
+
+    function closeModal() {
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }, 300); // Wait for transition
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+
+    // Close on click outside image
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal || e.target.classList.contains('modal-content-wrapper')) {
+            closeModal();
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('show')) {
+            closeModal();
+        }
     });
 });
