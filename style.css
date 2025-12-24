@@ -302,27 +302,40 @@ nav {
     letter-spacing: 0.1em;
 }
 
-.speaker-tags {
+.speaker-list {
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 15px;
 }
 
-.speaker-tags span {
-    /* Minimalist Tag */
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--primary);
-    padding: 8px 24px;
-    border-radius: 100px;
-    font-size: 0.9rem;
-    font-weight: 500;
+.speaker-info {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 6px 0;
     transition: var(--transition);
 }
 
-.speaker-tags span:hover {
-    border-color: var(--accent);
+.speaker-info a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
+    padding-bottom: 2px;
+}
+
+.speaker-info a:hover {
     color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.affiliation {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    font-weight: 400;
 }
 
 .card-description {
@@ -586,6 +599,13 @@ nav {
 .link-card span {
     font-size: 0.95rem;
     font-weight: 600;
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
+    padding-bottom: 1px;
+}
+
+.link-card:hover span {
+    border-bottom-color: var(--accent);
 }
 
 .link-card i {
@@ -598,27 +618,20 @@ footer {
     background: var(--white);
     /* Reverted to light background */
     color: var(--text-main);
-    padding: 100px 5% 40px;
+    padding: 80px 5% 40px;
     text-align: center;
     border-top: 1px solid var(--border-color);
 }
 
-.footer-contact h4 {
-    color: var(--primary);
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-    font-weight: 400;
-}
-
-.footer-subtext {
-    color: var(--text-sub);
-    font-size: 0.9rem;
+.footer-contact {
+    margin-bottom: 40px;
 }
 
 .host-info {
-    margin-top: 30px;
-    font-weight: 700;
+    font-size: 1.25rem;
+    font-weight: 500;
     color: var(--primary);
+    letter-spacing: 0.02em;
 }
 
 .host-link {
@@ -969,7 +982,7 @@ footer {
 .archive-speakers li a {
     color: var(--primary);
     text-decoration: none;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid transparent;
     transition: all 0.2s;
 }
 
@@ -987,15 +1000,23 @@ footer {
     color: var(--accent);
     text-decoration: none;
     font-weight: 700;
-}
-
-.link-text i {
-    width: 16px;
-    height: 16px;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
 }
 
 .link-text:hover {
-    text-decoration: underline;
+    border-bottom-color: var(--accent);
+}
+
+.inline-link {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.inline-link:hover {
+    border-bottom-color: var(--accent);
 }
 
 /* Archive Animation Overrides */
