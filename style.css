@@ -1129,3 +1129,110 @@ footer {
     opacity: 1;
     animation: none;
 }
+
+/* --- Schedule Timeline --- */
+.schedule-container {
+    margin-top: 50px;
+    position: relative;
+    padding-left: 35px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 40px;
+}
+
+.schedule-container::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 40px;
+    bottom: 0;
+    width: 1px;
+    background: var(--border-color);
+}
+
+.schedule-item {
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.schedule-item::before {
+    content: '';
+    position: absolute;
+    left: -35px;
+    top: 8px;
+    width: 9px;
+    height: 9px;
+    background: var(--white);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.schedule-item.break::before {
+    border-color: var(--border-color);
+    background: var(--border-color);
+}
+
+.schedule-time {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 6px;
+    display: block;
+    letter-spacing: 0.05em;
+}
+
+.schedule-content {
+    display: block;
+}
+
+.schedule-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.schedule-speaker {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--primary);
+}
+
+.schedule-speaker a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.schedule-speaker a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.schedule-affiliation {
+    font-size: 0.8rem;
+    color: var(--text-sub);
+    font-weight: 400;
+}
+
+.schedule-title {
+    font-size: 1rem;
+    color: var(--text-main);
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.schedule-item.break .schedule-title {
+    color: var(--text-sub);
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+@media (max-width: 768px) {
+    .schedule-header {
+        flex-direction: column;
+        gap: 2px;
+    }
+}
