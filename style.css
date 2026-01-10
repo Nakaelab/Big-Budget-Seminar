@@ -881,6 +881,33 @@ footer {
     .stats-trigger {
         padding: 20px;
     }
+
+    /* Archive Page Mobile Styles */
+    .archive-item {
+        flex-direction: column;
+        gap: 15px;
+        padding-bottom: 40px;
+    }
+
+    .archive-date {
+        width: 100%;
+        padding-right: 0;
+        display: flex;
+        align-items: baseline;
+        gap: 15px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+
+    .archive-date .date {
+        margin-bottom: 0;
+        font-size: 2rem;
+    }
+
+    .archive-content h2 {
+        font-size: 1.5rem;
+    }
 }
 
 /* --- Archive Page Styles --- */
